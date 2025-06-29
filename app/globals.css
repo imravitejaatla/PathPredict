@@ -1,0 +1,290 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 0%; /* Pure black */
+    --foreground: 0 0% 98%; /* Almost white */
+
+    --card: 0 0% 3%; /* Very dark gray, almost black */
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 0%; /* Pure black */
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 0 0% 9%; /* Very dark gray */
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 9%; /* Very dark gray */
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 0 0% 9%; /* Very dark gray */
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 14.9%; /* Dark gray border */
+    --input: 0 0% 14.9%;
+    --ring: 224.3 76.3% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes roadLine {
+  0% {
+    transform: translateX(100vw);
+  }
+  100% {
+    transform: translateX(-100vw);
+  }
+}
+
+@keyframes busDrive {
+  0% {
+    transform: translateX(-100px);
+  }
+  100% {
+    transform: translateX(calc(100vw + 100px));
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideDown {
+  animation: slideDown 0.2s ease-out forwards;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animation-delay-400 {
+  animation-delay: 0.4s;
+}
+
+.animate-roadLine {
+  animation: roadLine 8s linear infinite;
+}
+
+.animate-busDrive {
+  animation: busDrive 15s linear infinite;
+}
+
+/* Leaflet map styles */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+
+.leaflet-control-attribution {
+  font-size: 10px;
+}
+
+.leaflet-control-zoom {
+  border: none !important;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2) !important;
+}
+
+.leaflet-control-zoom a {
+  background-color: white !important;
+  color: #333 !important;
+}
+
+/* Make sure popups look good */
+.leaflet-popup-content-wrapper {
+  border-radius: 8px;
+}
+
+.leaflet-popup-content {
+  margin: 10px 12px;
+  line-height: 1.4;
+}
+
+.leaflet-popup-tip-container {
+  margin-top: -1px;
+}
+
+/* Custom div icon styles */
+.custom-div-icon {
+  background: none;
+  border: none;
+}
+
+/* Update the dark mode section to be more comprehensive and fix uneven gray colors */
+
+.dark {
+  --background: 0 0% 0%; /* Pure black */
+  --foreground: 0 0% 98%; /* Almost white */
+
+  color-scheme: dark;
+  color: hsl(var(--foreground));
+  background-color: hsl(var(--background));
+}
+
+/* More specific selectors to override all gray backgrounds */
+.dark .bg-white,
+.dark .bg-gray-50,
+.dark .bg-gray-100,
+.dark .bg-slate-50,
+.dark .bg-slate-100,
+.dark section.bg-white,
+.dark section.bg-gray-50,
+.dark section.py-16.bg-white,
+.dark section.py-16.bg-gray-50 {
+  background-color: #000000 !important; /* Force pure black */
+  color: hsl(var(--foreground));
+}
+
+.dark .border,
+.dark .border-gray-200,
+.dark .border-gray-100,
+.dark .border-slate-200,
+.dark .border-slate-100 {
+  border-color: #1a1a1a !important; /* Very dark gray for borders */
+}
+
+/* Card and component backgrounds */
+.dark .card,
+.dark .bg-slate-800,
+.dark .bg-slate-900,
+.dark div.bg-white,
+.dark div.rounded-lg.shadow-lg,
+.dark div.rounded-md.border {
+  background-color: #0a0a0a !important; /* Very dark but not pure black */
+}
+
+/* Fix for feature cards and other specific components */
+.dark .hover\:shadow-lg:hover,
+.dark .hover\:shadow-md:hover {
+  box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.05), 0 4px 6px -2px rgba(255, 255, 255, 0.025) !important;
+}
+
+/* Fix text colors for better contrast */
+.dark .text-gray-800,
+.dark .text-gray-700,
+.dark .text-gray-600,
+.dark .text-blue-800,
+.dark .text-slate-800,
+.dark .text-slate-700,
+.dark .text-slate-600 {
+  color: hsl(var(--foreground)) !important;
+}
+
+.dark .text-gray-500,
+.dark .text-gray-400,
+.dark .text-slate-500,
+.dark .text-slate-400 {
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+/* Fix for specific sections */
+.dark section.py-16.bg-white,
+.dark section.py-16.bg-gray-50 {
+  background-color: #000000 !important;
+}
+
+/* Fix for feature cards */
+.dark .bg-white.rounded-lg.shadow-md.p-6.hover\:shadow-lg {
+  background-color: #0a0a0a !important;
+  border: 1px solid #1a1a1a !important;
+}
+
+/* Add these rules to the end of the file to ensure proper text visibility in dark mode */
+
+/* Fix for BusServiceInfo component */
+.dark .bg-blue-50 {
+  background-color: rgba(30, 58, 138, 0.3) !important; /* Dark blue with transparency */
+}
+
+.dark .text-blue-800,
+.dark .text-blue-700,
+.dark .text-blue-600 {
+  color: #93c5fd !important; /* Light blue for better visibility */
+}
+
+.dark .text-gray-700,
+.dark .text-gray-600 {
+  color: #e5e7eb !important; /* Light gray for better visibility */
+}
+
+/* Fix for accordion items in dark mode */
+.dark .bg-white.p-3.rounded-md.border.border-blue-100 {
+  background-color: #0a0a0a !important;
+  border-color: #1e40af33 !important; /* Dark blue with transparency */
+}
+
+/* Fix for route numbers in dark mode */
+.dark .h-6.w-10.rounded.flex.items-center.justify-center.font-bold.text-white.bg-red-600,
+.dark .h-6.w-10.rounded.flex.items-center.justify-center.font-bold.text-white.bg-blue-600 {
+  /* These already have white text so they should be visible */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
